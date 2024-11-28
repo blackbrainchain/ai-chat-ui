@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from './components/Routes';
 import { ApolloProvider } from '@apollo/client';
 import client from './constants/apollo-client';
+import { Guard } from './components/auth/Guard';
 
 const darkMode = createTheme( {
   palette: {
@@ -16,7 +17,9 @@ const App = () => {
       <ThemeProvider theme={darkMode}>
         <CssBaseline />
         <Container>
-          <RouterProvider router={router} />
+          <Guard>
+            <RouterProvider router={router} />
+          </Guard>
         </Container>
       </ThemeProvider>
     </ApolloProvider>
