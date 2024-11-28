@@ -2,6 +2,8 @@ import { Box, Tooltip, IconButton, Avatar, Menu, MenuItem, Typography } from "@m
 import { useState } from "react";
 import { useLogout } from "../../hooks/use-logout";
 import { onLogout } from "../../utils/logout";
+import { snackVar } from "../../constants/snack";
+import { UNKNOWN_ERROR_SNACK_MESSAGE } from "../../constants/errors";
 
 const Settings = () => {
 
@@ -41,10 +43,14 @@ const Settings = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            <MenuItem key='logout' onClick={() => {
-                logout();
+            <MenuItem key='logout' onClick={async () => {
+              try {
+                await logout();
                 onLogout();
                 handleCloseUserMenu()
+              } catch ( err ) {
+                snackVar(UNKNOWN_ERROR_SNACK_MESSAGE)
+              }                
               }}>
                 <Typography sx={{ textAlign: 'center' }}>Logout</Typography>
               </MenuItem>

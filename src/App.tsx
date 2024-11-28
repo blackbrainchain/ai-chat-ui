@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import client from './constants/apollo-client';
 import { Guard } from './components/auth/Guard';
 import Header from './components/header/Header';
+import Snackbar from './components/snackbar/Snackbar';
 
 const darkMode = createTheme( {
   palette: {
@@ -22,7 +23,8 @@ const App = () => {
             <Guard>
               <RouterProvider router={router} />
             </Guard>
-          </Container>        
+        </Container>
+        <Snackbar />
       </ThemeProvider>
     </ApolloProvider>
   );
