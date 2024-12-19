@@ -4,6 +4,7 @@ import { useGetCurrentUser } from "../../hooks/use-get-current.user";
 import { authenticatedVars } from "../../constants/autenticated";
 import { snackVar } from "../../constants/snack";
 import { UNKNOWN_ERROR_SNACK_MESSAGE } from "../../constants/errors";
+import { usePath } from "../../hooks/use-patth";
 
 interface GuardProps {
     children: JSX.Element
@@ -11,6 +12,8 @@ interface GuardProps {
 
 export const Guard = ({children}: GuardProps) => {
     const { data: user, error } = useGetCurrentUser();
+
+    const { path } = usePath();
     
     useEffect( () => {
         if ( user ) {
@@ -27,7 +30,7 @@ export const Guard = ({children}: GuardProps) => {
     return (
         <>
             {
-                excludedRoutes.includes( window.location.pathname ) ? children : user && children
+                excludedRoutes.includes( path ) ? children : user && children
             }
         </>
     );

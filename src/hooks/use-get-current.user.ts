@@ -1,7 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
-import { User } from "../models/user";
+import { useQuery } from "@apollo/client";
+import { graphql } from "../gql";
 
-const GET_CURRENT_USER = gql
+const getCurrentUserDocument = graphql(
     `
     query GetCurrentUser {
         currentUser {
@@ -9,10 +9,10 @@ const GET_CURRENT_USER = gql
             email
         }
     }
-    `
+    `);
 
 const useGetCurrentUser = () => {
-    return useQuery<{currentUser: User}>( GET_CURRENT_USER );
+    return useQuery( getCurrentUserDocument );
 };
 
 export { useGetCurrentUser };
