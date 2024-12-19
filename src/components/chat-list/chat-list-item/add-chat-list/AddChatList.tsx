@@ -3,7 +3,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useState } from "react";
 import { useCreateChat } from "../../../../hooks/use-create-chat";
 import { UNKNOWN_ERROR_MESSAGE } from "../../../../constants/errors";
-import { on } from "events";
 
 interface AddChatListProps {
     open: boolean;
