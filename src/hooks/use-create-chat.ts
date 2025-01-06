@@ -11,15 +11,16 @@ const createChatDocument = graphql(`
 `);
 
 const useCreateChat = () => {
-  return useMutation( createChatDocument, {
+  return useMutation(createChatDocument, {
     update(cache, { data }) {
       if (data?.createChat) { // Add a type guard here
         cache.modify({
           fields: {
             chats(existingChats = []) {
               const newChatRef = cache.writeFragment({
-                data: data.createChat,
+                data: data?.createChat,
                 fragment: ChatFragment,
+                fragmentName: "ChatFragment",
               });
               return [...existingChats, newChatRef];
             },

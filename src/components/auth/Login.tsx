@@ -3,11 +3,11 @@ import { Link as MUILink } from "@mui/material";
 import Auth from "./Auth";
 import { useLogin } from "../../hooks/use.login";
 
-export const Login = () => {
-    const { login, error } = useLogin();
+const Login = () => {
+  const { login, error } = useLogin();
 
-    return (
-         <>
+  return (
+    <>
       <Auth
         submitLabel="Login"
         onSubmit={(request) => login(request)}
@@ -18,6 +18,7 @@ export const Login = () => {
         </Link>
       </Auth>
     </>
-    )
+  );
 };
+
 export default Login;

@@ -7,13 +7,13 @@ interface ChatListHeaderProps {
 
 const ChatListHeader = ({ handleAddChat }: ChatListHeaderProps) => {
   return (
-       <AppBar position="static" color="transparent">
-            <Toolbar>
-                <IconButton size="large" edge="start" onClick={handleAddChat}>
-                    <AddCircle />
-                </IconButton>
-            </Toolbar>
-        </AppBar>
+    <AppBar position="static" color="transparent">
+      <Toolbar>
+        <IconButton size="large" edge="start" onClick={handleAddChat}>
+          <AddCircle />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 
