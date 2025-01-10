@@ -7,26 +7,26 @@ import { UNKNOWN_ERROR_SNACK_MESSAGE } from "../../constants/errors";
 import { usePath } from "../../hooks/use-patth";
 
 interface GuardProps {
-    children: JSX.Element;
+  children: JSX.Element;
 }
 
 const Guard = ({ children }: GuardProps) => {
-    const { data: user, error } = useGetCurrentUser();
-    const { path } = usePath();
+  const { data: user, error } = useGetCurrentUser();
+  const { path } = usePath();
 
-    useEffect(() => {
-        if (user) {
-            authenticatedVars(true);
-        }
-    }, [user]);
+  useEffect(() => {
+    if (user) {
+      authenticatedVars(true);
+    }
+  }, [user]);
 
-    useEffect(() => {
-        if (error?.networkError) {
-            snackVar(UNKNOWN_ERROR_SNACK_MESSAGE);
-        }
-    }, [error]);
+  useEffect(() => {
+    if (error?.networkError) {
+      snackVar(UNKNOWN_ERROR_SNACK_MESSAGE);
+    }
+  }, [error]);
 
-    return <>{excludedRoutes.includes(path) ? children : user && children}</>;
+  return <>{excludedRoutes.includes(path) ? children : user && children}</>;
 };
 
 export default Guard;

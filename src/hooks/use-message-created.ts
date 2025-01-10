@@ -13,15 +13,15 @@ const messageCreatedDocument = graphql(`
 `);
 
 export const useMessageCreated = (
-    variables: SubscriptionMessageCreatedArgs
+  variables: SubscriptionMessageCreatedArgs
 ) => {
-    return useSubscription(messageCreatedDocument, {
-        variables,
-        onData: ({ client, data }) => {
-            if (data.data) {
-                updateMessages(client.cache, data.data.messageCreated);
-                updateLatestMessage(client.cache, data.data.messageCreated);
-            }
-        },
-    });
+  return useSubscription(messageCreatedDocument, {
+    variables,
+    onData: ({ client, data }) => {
+      if (data.data) {
+        updateMessages(client.cache, data.data.messageCreated);
+        updateLatestMessage(client.cache, data.data.messageCreated);
+      }
+    },
+  });
 };
